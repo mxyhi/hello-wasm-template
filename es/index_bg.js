@@ -1,9 +1,8 @@
-let imports = {};
-imports['__wbindgen_placeholder__'] = module.exports;
-let wasm;
-const { TextDecoder, TextEncoder } = require(`util`);
+import * as wasm from './index_bg.wasm';
 
-let cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
+const lTextDecoder = typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder;
+
+let cachedTextDecoder = new lTextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
 
@@ -21,17 +20,17 @@ function getStringFromWasm0(ptr, len) {
 }
 /**
 */
-module.exports.greet = function() {
+export function greet() {
     wasm.greet();
-};
+}
 
 /**
 * @returns {string}
 */
-module.exports.get_char = function() {
+export function get_char() {
     const ret = wasm.get_char();
     return String.fromCodePoint(ret);
-};
+}
 
 let cachedInt32Memory0 = new Int32Array();
 
@@ -44,7 +43,7 @@ function getInt32Memory0() {
 /**
 * @returns {string}
 */
-module.exports.get_str = function() {
+export function get_str() {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         wasm.get_str(retptr);
@@ -55,27 +54,29 @@ module.exports.get_str = function() {
         wasm.__wbindgen_add_to_stack_pointer(16);
         wasm.__wbindgen_free(r0, r1);
     }
-};
+}
 
 /**
 * @returns {number}
 */
-module.exports.get_usize = function() {
+export function get_usize() {
     const ret = wasm.get_usize();
     return ret >>> 0;
-};
+}
 
 /**
 * @returns {number}
 */
-module.exports.get_isize = function() {
+export function get_isize() {
     const ret = wasm.get_isize();
     return ret;
-};
+}
 
 let WASM_VECTOR_LEN = 0;
 
-let cachedTextEncoder = new TextEncoder('utf-8');
+const lTextEncoder = typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder;
+
+let cachedTextEncoder = new lTextEncoder('utf-8');
 
 const encodeString = (typeof cachedTextEncoder.encodeInto === 'function'
     ? function (arg, view) {
@@ -128,10 +129,12 @@ function passStringToWasm0(arg, malloc, realloc) {
     return ptr;
 }
 /**
+* ### string inversion
+* ### 字符串反转
 * @param {string} str
 * @returns {string}
 */
-module.exports.parse_str = function(str) {
+export function parse_str(str) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         const ptr0 = passStringToWasm0(str, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -144,17 +147,20 @@ module.exports.parse_str = function(str) {
         wasm.__wbindgen_add_to_stack_pointer(16);
         wasm.__wbindgen_free(r0, r1);
     }
-};
+}
 
-module.exports.__wbg_alert_9e3a098d58174212 = function(arg0, arg1) {
+/**
+* ### fibonacci series
+* ### 斐波那契数列
+* @param {number} x
+* @returns {number}
+*/
+export function fib(x) {
+    const ret = wasm.fib(x);
+    return ret >>> 0;
+}
+
+export function __wbg_alert_93f6c5825d9010ee(arg0, arg1) {
     alert(getStringFromWasm0(arg0, arg1));
 };
-
-const path = require('path').join(__dirname, 'index_bg.wasm');
-const bytes = require('fs').readFileSync(path);
-
-const wasmModule = new WebAssembly.Module(bytes);
-const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
-wasm = wasmInstance.exports;
-module.exports.__wasm = wasm;
 

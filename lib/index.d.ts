@@ -1,27 +1,35 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- */
+*/
 export function greet(): void;
 /**
- * @returns {string}
- */
+* @returns {string}
+*/
 export function get_char(): string;
 /**
- * @returns {string}
- */
+* @returns {string}
+*/
 export function get_str(): string;
 /**
- * @returns {number}
- */
+* @returns {number}
+*/
 export function get_usize(): number;
 /**
- * @returns {number}
- */
+* @returns {number}
+*/
 export function get_isize(): number;
 /**
- * @description stringInversion 字符串反转
- * @param {string} str
- * @returns {string}
- */
+* ### string inversion
+* ### 字符串反转
+* @param {string} str
+* @returns {string}
+*/
 export function parse_str(str: string): string;
+/**
+* ### fibonacci series
+* ### 斐波那契数列
+* @param {number} x
+* @returns {number}
+*/
+export function fib(x: number): number;

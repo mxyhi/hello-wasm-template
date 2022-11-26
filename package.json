@@ -2,6 +2,9 @@
   "name": "hello-wasm-template",
   "type": "module",
   "author": "mxy",
+  "scripts": {
+    "build": "wasm-pack build ./src-wasm"
+  },
   "description": "wasm sample template",
   "collaborators": [
     "mxy <imxyi@hotmail.com>"
@@ -12,21 +15,22 @@
   "version": "0.1.0",
   "files": [
     "es",
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mxyhi/mxyhi-hello-wasm-template.git"
   },
-  "main": "./lib/index.cjs",
-  "module": "./es/index.mjs",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
   "types": "./index.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.mjs",
-      "require": "./lib/index.cjs"
+      "types": "./index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
     }
   },
   "license": "MIT"

@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# src-wasm
+target
+**/*.rs.bk
+Cargo.lock
+bin/
+pkg/
+wasm-pack.log
