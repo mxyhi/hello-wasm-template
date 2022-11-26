@@ -1,5 +1,5 @@
 {
-  "name": "@mxy/hello-wasm-template",
+  "name": "hello-wasm-template",
   "type": "module",
   "author": "mxy",
   "description": "wasm sample template",
