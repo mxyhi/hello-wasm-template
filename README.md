@@ -25,9 +25,17 @@ export function get_usize(): number;
  */
 export function get_isize(): number;
 /**
- * @description stringInversion 字符串反转
+ * ### string inversion
+ * ### 字符串反转
  * @param {string} str
  * @returns {string}
  */
 export function parse_str(str: string): string;
+/**
+ * ### fibonacci series
+ * ### 斐波那契数列
+ * @param {number} x
+ * @returns {number}
+ */
+export function fib(x: number): number;
 ```
